@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="src/js/script.js" defer></script>
+    <link rel="stylesheet" href="src/css/style.css">
+	<link rel="stylesheet" href="src/css/styles_tab.css">
+	<link rel="icon" type="image/x-icon" href="src/images/favicon.png">
+	<title>16S rRNA Analysis</title>
+
+    <!-- Albumslider -->
+   <link rel="stylesheet" type="text/css" href="src/css/albumslider.css"></link>
+   <script src="src/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+   <script src="src/js/jquery.albumSlider.min.detect.js" type="text/javascript"></script>
+   <script type="text/javascript" src="src/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+   <script type="text/javascript" src="src/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+   <link rel="stylesheet" type="text/css" href="src/js/fancybox/jquery.fancybox-1.3.4.css" media="screen"/>
+
+
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  <script type="javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript"text/javascript src="src/js/scroll-to-top.js"></script>
+   <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
+   <!--
+   <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="src/css/top-arrow.css">
+
+   -->
+
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+		<script type="text/javascript">
+		var jQuery_3_4_1 = $.noConflict(true);
+		</script>
+
+		<script>
+            jQuery_3_4_1(document).ready(function() {
+                jQuery_3_4_1("#gfg").on("keyup", function() {
+                    var value = jQuery_3_4_1(this).val().toLowerCase();
+                    jQuery_3_4_1("#geeks tr").filter(function() {
+                        jQuery_3_4_1(this).toggle(jQuery_3_4_1(this).text()
+                        .toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+             *   Examples - images
+             */
+
+            $("a#example1").fancybox();
+
+            $("a#example2").fancybox({
+                'overlayShow': false,
+                'transitionIn': 'elastic',
+                'transitionOut': 'elastic',
+                'titlePosition': 'inside',
+                'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+                    return '<div id="fancybox-title-inside">' + title + '</div>';
+//                  return '<span id="fancybox-title-inside">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+                }
+            });
+            $("a#example3").fancybox({
+                'transitionIn': 'none',
+                'transitionOut': 'none'
+            });
+
+            $("a#example4").fancybox({
+                'opacity': true,
+                'overlayShow': false,
+                'transitionIn': 'elastic',
+                'transitionOut': 'none'
+            });
+
+            $("a#example5").fancybox();
+
+            $("a#example6").fancybox({
+                'titlePosition': 'outside',
+                'overlayColor': '#000',
+                'overlayOpacity': 0.9
+            });
+
+            $("a#example7").fancybox({
+                'titlePosition': 'inside'
+            });
+
+            $("a#example8").fancybox({
+                'titlePosition': 'over'
+            });
+
+            $("a[rel=example_group]").fancybox({
+                'transitionIn': 'none',
+                'transitionOut': 'none',
+                'titlePosition': 'over',
+                'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+                    return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+                }
+            });
+
+            /*
+             *   Examples - various
+             */
+
+            $("#various1").fancybox({
+                'titlePosition': 'inside',
+                'transitionIn': 'none',
+                'transitionOut': 'none'
+            });
+
+            $("#various2").fancybox();
+
+            $("#various3").fancybox({
+                'width': '75%',
+                'height': '75%',
+                'autoScale': false,
+                'transitionIn': 'none',
+                'transitionOut': 'none',
+                'type': 'iframe'
+            });
+
+            $("#various4").fancybox({
+                'padding': 0,
+                'autoScale': false,
+                'transitionIn': 'none',
+                'transitionOut': 'none'
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('div.albumSlider').albumSlider();
+
+            $('div.albumSlider-h').albumSlider({direction: 'h', step: 3});
+        });
+    </script>
+<!-- search table script---->
+
+
+
+</head>
+
+
+<body>
+     <!-- Return to Top -->
+
+<a id="return--to-top" onclick="topFunction()"><i class="icon-chevron-up"></i></a>
+
+<header id="header" style="z-index: 1">
+
+	<div id="navbar" class="container">
+
+      
+
+        <nav class="main-nav" >
+
+       	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto" class="tabs">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+
+                <li class="tab active" data-tab-target="#home">
+                    Home
+                </li>
+                <li class="tab" data-tab-target="#sampleinfo">
+                    Project Information
+                </li>
+                <li class="tab" data-tab-target="#qc">
+                    Data QC
+                </li>
+                <li class="tab" data-tab-target="#taxonomy">
+                    Taxonomy
+                </li>
+                <li class="tab" data-tab-target="#diversity">
+                    Diversity
+                </li>
+                <li class="tab" data-tab-target="#phylogeny">
+                    Phylogeny
+                </li>
+                <li class="tab" data-tab-target="#more">
+                    More
+                </li>
+            </ul>
+        </div>
+        </nav>
+        </div>
+</header>
+
+
+
+<div class="tab-content">
+
+<div id="home" class="active" data-tab-content >
+
+        <div class="heading" >
+
+          <h1  class="header-line">16S rRNA Sequencing Report</h1>
+        </div>
+
+<!-- table -->
+<div class="home-table">
+<table class="center" style="width:70%">
+    <tr>
+        <td class="tb-hd">Institution/Company</td>
+        <td>Haryana Agri</td>
+    </tr>
+    <tr>
+        <td class="tb-hd">Project ID</td>
+        <td>OPL_16s_5_177</td>
+    </tr>
+</table>
+</div>
+</div>
+
+<!-- Project info-->
+<div id="sampleinfo" data-tab-content>
+
+
+      <div class="sample-info" >
+        <div class="sample">
+          <h2 class="fhead"> 1. Project Information</h2>
+
+<div class="project-info-table">
+
+<table class="project-info" style="width:50% ">
+    <thead class="thead">
+        <tr>
+            <th>SAMPLE-ID</th><th>CONDITION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>T1</td>
+            <td>Control</td>
+        </tr>
+        <tr>
+            <td>T2</td>
+            <td>NPK</td>
+        </tr>
+                <tr>
+            <td>T3</td>
+            <td>NPK_FYM</td>
+        </tr>
+        <tr>
+            <td>T4</td>
+            <td>NPK_WheatStraw</td>
+        </tr>
+        <tr>
+            <td>T5</td>
+            <td>NPK_GreenManure</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="project-info-table">
+
+
+</div>
+</div>
+</div>
+</div>
+<!--data qc-->
+
+<div class="data_qc" id="qc" data-tab-content>
+
+  <div class="qc">
+
+
+
+    <h2 class="fhead">2. Data Quality Contol</h2>
+    <div class="sub">
+
+
+    <h3 class="sub-head">2.1 Distribution of Sequencing Quality</h3>
+    <p>The “e” represents the sequence error rate and Qphred represents the base quality value,
+      Qphred=-10log10(e). The relationship between sequencing error rate (e) and sequencing base
+      quality value (Qphred) is as follow:</p>
+      <br>
+      <div class="seq-qual-table">
+
+<table class="qc" style="width:85%">
+    <thead class="thead">
+        <tr>
+            <th>Phred score</th>
+            <th>Error base</th>
+            <th>Right base</th>
+            <th>Q-score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>10</td>
+            <td>1/10</td>
+            <td>90%</td>
+            <td>Q10</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>1/100</td>
+            <td>99%</td>
+            <td>Q20</td>
+        </tr>
+        <tr>
+            <td>30</td>
+            <td>1/1,000</td>
+            <td>99.9%</td>
+            <td>Q30</td>
+        </tr>
+        <tr>
+            <td>40</td>
+            <td>1/10,000</td>
+            <td>99.99%</td>
+            <td>Q40</td>
+        </tr>
+    </tbody>
+</table>
+<br><br>
+</div>
+
+<div class="seq-qual-img">
+  <div>
+        <div class="albumSlider" id="ArgoseAS" style="height: 560px;" >
+        <div class="fullview"><img src=''/></div>
+        <div class="slider">
+            <div class="button movebackward" title="scroll up"></div>
+            <div class="imglistwrap">
+            <ul class="imglist">
+            <li>
+            <a id="example2" href='src/pictures/01_QM/PS_1_rawPE_QM.png' title="">
+             <img src='src/pictures/01_QM/PS_1_rawPE_QM.png'/></a>
+            </li>
+            <li>
+            <a id="example2" href='src/pictures/01_QM/PS_2_rawPE_QM.png' title="">
+             <img src='src/pictures/01_QM/PS_2_rawPE_QM.png'/></a>
+            </li>
+            <li>
+            <a id="example2" href='src/pictures/01_QM/PS_3_rawPE_QM.png' title="">
+             <img src='src/pictures/01_QM/PS_3_rawPE_QM.png'/></a>
+            </li>
+            <li>
+            <a id="example2" href='src/pictures/01_QM/PS_4_rawPE_QM.png' title="">
+             <img src='src/pictures/01_QM/PS_4_rawPE_QM.png'/></a>
+            </li>
+            <li>
+            <a id="example2" href='src/pictures/01_QM/PS_5_rawPE_QM.png' title="">
+             <img src='src/pictures/01_QM/PS_5_rawPE_QM.png'/></a>
+            </li>
+
+
+            </ul>
+            </div>
+            <div class="button moveforward" title="scroll down"></div>
+        </div>
+
+        <div id="theTitle" style="position: absolute;top:565px;width: 100%;text-align: center"></div>
+    </div>
+  </div>
+
+  <br>
+  <div class="fig-sqi">
+    <p><i>Distribution of Sequencing Quality</i>
+    </p>
+    <br>
+  </div>
+  <p>The base position is on the horizontal axis and the sequencing quality is on the vertical axis
+The first half part of the distribution is for reads1 and the latter half part is for reads2</p>
+</div>
+
+</div>
+
+
+<!--Distribution of Tags Length--->
+
+<br><div class="sub">
+
+
+<h3 class="sub-head">2.2 Distribution of Tags Length</h3>
+<p>Paired-end clean reads were merged as tags using FLASH and the length distribution of assembled tags is shown below</p>
+<br><br>
+
+<div class="raw-data-img">
+
+  <div>
+        <div class="albumSlider" id="ArgoseAS">
+        <div class="fullview"><img src=''/></div>
+        <div class="slider">
+            <div class="button movebackward" title="scroll up"></div>
+            <div class="imglistwrap">
+            <ul class="imglist">
+
+            <li>
+            <a id="example2" href='src/pictures/04_Histograms/PS_1.histograms.png' title="">
+             <img src='src/pictures/04_Histograms/PS_1.histograms.png'/></a>
+            </li>
+            <li>
+            <a id="example2" href='src/pictures/04_Histograms/PS_2.histograms.png' title="">
+             <img src='src/pictures/04_Histograms/PS_2.histograms.png'/></a>
+            </li>
+            <li>
+            <a id="example2" href='src/pictures/04_Histograms/PS_3.histograms.png' title="">
+             <img src='src/pictures/04_Histograms/PS_3.histograms.png'/></a>
+            </li>
+            <li>
+            <a id="example2" href='src/pictures/04_Histograms/PS_4.histograms.png' title="">
+             <img src='src/pictures/04_Histograms/PS_4.histograms.png'/></a>
+            </li>
+            <li>
+            <a id="example2" href='src/pictures/04_Histograms/PS_5.histograms.png' title="">
+             <img src='src/pictures/04_Histograms/PS_5.histograms.png'/></a>
+            </li>
+
+            </ul>
+            </div>
+            <div class="button moveforward" title="scroll down"></div>
+        </div>
+
+        <div id="theTitle" style="position: absolute;top:565px;width: 100%;text-align: center"></div>
+    </div>
+  </div>
+
+<br>
+<div class="fig-sqi">
+<p><i>Tags Length Distribution</i>
+</p>
+</div>
+</div>
+</div>
+
+<!-- summary of sequence information data-------->
+
+<br><div class="sub">
+
+<h3 class="sub-head"> 2.3 Summary of Sequencing Data Information</h3>
+<p>The detail statistics for the quality of sequencing data are shown below</p>
+
+<div class="tabl">
+    <input id="gfg" type="text" placeholder="Search here" style="float:left padding-left: 10px;">
+
+  <div class="qual-table" id="tb">
+
+<table class="data-info gy" style="width:85%" id='myTable'>
+
+<thead class="thead tabhead">
+
+          <tr>
+              <th>Sample</th>
+              <th>Raw PE(#)</th>
+              <th>Qualified(#)</th>
+              <th>Combined(#)</th>
+              <th>Nochime(#)</th>
+              <th>Effective Rate(%)</th>
+              <th>Q20(%)</th>
+              <th>Q30(%)</th>
+              <th>GC Content(%)</th>
+          </tr>
+      </thead>
+      <tbody id="geeks">
+            <tr>
+            <tr><td>T1</td><td>15526</td><td>14504</td><td>14985</td><td>11568</td><td>77.20</td><td>97.77</td><td>93.29</td><td>53.80</td></tr>
+            </tr>
+            <tr>
+            <tr><td>T2</td><td>26977</td><td>25230</td><td>26054</td><td>21246</td><td>81.55</td><td>97.82</td><td>93.39</td><td>54.98</td></tr>
+            </tr>
+            <tr>
+            <tr><td>T3</td><td>138889</td><td>130290</td><td>133942</td><td>119367</td><td>89.12</td><td>98.02</td><td>93.90</td><td>57.19</td></tr>
+            </tr>
+            <tr>
+            <tr><td>T4</td><td>116982</td><td>111512</td><td>114302</td><td>100908</td><td>88.28</td><td>98.06</td><td>93.81</td><td>56.49</td></tr>
+            </tr>
+            <tr>
+            <tr><td>T5</td><td>134533</td><td>127903</td><td>131419</td><td>114152</td><td>86.86</td><td>98.04</td><td>93.85</td><td>55.47</td></tr>
+            </tr>
+
+      </tbody>
+  </table>
+
+</div>
+</div>
+<br>
+<p class="tremark"><b>Sample:</b> sample name<br />
+<b>Raw PE(#):</b> Four rows are taken as a unit to calculate the total pairs of read1 and read2 in raw data files split by barcode<br />
+<b>Qualified(#):</b> Clean reads after qualified from raw reads under specific filtering conditions<br />
+<b>Combined(#):</b> Tags generated from clean reads based on overlap<br />
+<b>Nochime(#):</b> Effective tags after removing the chimera sequences<br />
+<b>Effective Rate(%):</b> (Effective tags)/(Raw PE) * 100%<br />
+<b>Q20, Q30:</b> (Base count of Phred value > 20 or 30) / (Total base count)<br />
+<b>GC content:</b> (G & C base count) / (Total base count)<br />
+</p>
+</div>
+</div>
+</div>
+
+<!-- TAXONOMY -->
+
+<div class="taxa" id="taxonomy" data-tab-content>
+
+  <div class="tax">
+
+    <div class="heatmap">
+
+    <h3 class="sub-head"> 3.1 Heatmap</h3>
+
+    <h3 class="sec-sub-head">3.1.1 Phylum level</h3>
+    <p>The heat-map shows an interactive view of phylum composition and abundance among different samples.</p><br>
+
+        <div class="heat-phy">
+      <img id="img-ali" style="width:900px"src="src/pictures/Analysis/Heatmap_Phylum.jpeg" alt="Heatmap at phylum level">
+      <p class="fig">
+                <i>Heatmap at phylum level</i>
+            </p>
+    </div>
+
+
+    <h3 class="sec-sub-head">3.1.2 Genus level</h3>
+    <p>The heat-map shows an interactive view of genus composition and abundance among different samples.</p><br>
+
+    <div class="heat-gen">
+      <img id="img-ali" style="width:900px"src="src/pictures/Analysis/Heatmap_Genus.jpeg" alt="Heatmap at genus level">
+      <p class="fig"><i>Heatmap at genus level</i></p>
+    </div>
+
+        </div>
+    <br><div class="abundance">
+
+
+    <h3 class="sub-head"> 3.2 Relative Abundance Plot</h3>
+
+    <p>The relative abundance plot was formed based on distribution of available genus in taxonomy for each sample.</p>
+    <h3 class="sec-sub-head">3.2.1 Phylum level</h3>
+
+    <div class="abn-phy">
+      <img id="img-ali" style="width:900px"src="src/pictures/Analysis/Abundance-phylum.jpeg" alt="barplot at phylum level">
+      <p class="fig"><i>Relative abundance at phylum level</i></p>
+    </div>
+
+    <br>
+    <h3 class="sec-sub-head">3.2.2 Genus level</h3>
+    <div class="abn-gen">
+      <img id="img-ali" style="width:900px"src="src/pictures/Analysis/Abundance_genus.jpeg" alt="barplot at genus level">
+      <p class="fig"><i>Relative abundance at genus level</i></p>
+    </div>
+    </div>
+
+    <br><div class="complexhm">
+
+
+    <h3 class="sub-head"> 3.3 Complex Heatmap</h3>
+
+    <p>Complex heatmap is a powerful visualization method for revealing associations between multiple sources of information.
+      They are efficient to visualize associations between different sources of data sets and reveal potential patterns.</p>
+   <br>
+
+    <div class="comp-hmap">
+      <img id="img-ali" style="width:900px"src="src/pictures/Analysis/Complex_Heatmap.jpeg" alt="complex heatmap">
+      <p class="fd-comhm"><i>Complex Heatmap</i></p>
+    </div>
+
+    </div>
+    <br><div class="krona-plot">
+
+
+    <h3 class="sub-head"> 3.4 Krona </h3>
+
+    <p>KRONA visually displays the analysis result of species annotation.
+      Circles from inside to outside stand for different taxonomic ranks,
+      and the area of sector means respective proportion of different OTU annotation results. </p>
+   <br>
+
+    <div class="krona">
+      <img id="img-ali" style="width:900px"src="src/pictures/Analysis/Krona.png" alt="krona plot">
+      <p class="fd-krona"><i>Krona plot</i></p>
+    </div>
+
+    </div>
+    <br><div class="barplot">
+    <h3 class="sub-head"> 3.5 Bar Plot</h3>
+
+    <p>Bar plots allow immediate identification of the differences in the relative abundance of microbial groups across samples.</p>
+    <h3 class="sec-sub-head">3.5.1 Phylum level</h3>
+
+    <div class="bar-phy">
+      <img id="img-ali" style="width:900px"src="src/pictures/Analysis/Barplot_Phylum.jpeg" alt="barplot at phylum level">
+      <p class="fig"><i>Barplot at phylum level</i></p>
+    </div>
+
+    <br>
+    <h3 class="sec-sub-head">3.5.2 Genus level</h3>
+    <div class="bar-gen">
+      <img id="img-ali" style="width:900px"src="src/pictures/Analysis/Barplot_Genus.jpeg" alt="barplot at genus level">
+      <p class="fig"><i>Barplot at genus level</i></p>
+    </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<!--DIVERSITY ----->
+<div class="diversity" id="diversity" data-tab-content>
+
+  <div class="diver">
+
+		<div class="div-analysis">
+
+
+    <h3 class="sub-head"> 4.1 Alpha Diversity Analysis</h3>
+
+    <p>Boxplots were formed to analyze the difference of Alpha Diversity indices between groups.
+      T-test, wilcox and Tukey tests (T-test and Wilcox test are for 2 groups while Wilcox and Tukey tests are for groups more than 2)
+      are performed for analysis of significance of difference between groups.
+    </p>
+    <div class="alpha">
+      <img id="img-ali" style="width:600px"src="src/pictures/Analysis/Alpha_diversity.jpeg" alt="Alpha diversity analysis">
+      <p class="figg"><i>Boxplots for difference of observed species and shannon indices</i></p>
+    </div>
+
+    <h3 class="sub-head"> 4.2 Rarefaction Curves</h3>
+
+    <p>The Rarefaction Curve is created by randomly selecting a certain amount of sequencing data from the samples,
+  then counting the number of the species they represent.
+  If the curve is steep, lots of the species remain to be discovered.
+  If the curve becomes flatter, a credible number of samples have been taken, which means only the scarce species remain to be sampled.
+  </p>
+  <div class="rarefaction">
+    <img id="img-ali" style="width:600px"src="src/pictures/Analysis/Rarefaction.jpeg" alt="rarefaction analysis">
+    <p class="figg"><i>Rarefaction Curves</i></p>
+  </div>
+
+      <h3 class="sub-head"> 4.3 Principal component analysis (PCA)</h3>
+
+      <p>Principal component analysis (PCA) is a statistical procedure to extract principal components and
+        structures in data by using orthogonal transformation and reducing dimensionalities of data.
+        It extracts the first two axises reflecting the variation of samples to the most extent thus can reflect
+        high-dimensional data’s variation in two-dimensional graphs, which reveals the simple principle embedding in complex data.
+        The more similar the composition of community among the samples are, the closer the distance of their corresponding
+        data points are on the PCA graph.
+        <br>
+    </p>
+    <div class="rarefaction">
+      <img id="img-ali" style="width:600px"src="src/pictures/Analysis/PCoA.jpeg" alt="Rarefaction analysis">
+      <p class="figg"><i>Principal component analysis (PCA) plot</i></p>
+    </div>
+  </div>
+
+
+  </div>
+  </div>
+<!-- PHYLOGENY-->
+
+<div class="phylogen" id="phylogeny" data-tab-content>
+
+  <div class="phylo">
+
+    <div class="phylog">
+      <h3 class="sub-head">5.1 Phylogenetic Tree</h3>
+      <p>Phylogenetic Tree is defined as a diagrammatic
+        representation of evolutionary relationship among living organisms.</p>
+
+        <div class="phylogenetic">
+          <img id="img-ali" style="width:1010px"src="src/pictures/Analysis/Phylogenetic_Tree.jpg" alt="phylogenetic analysis">
+          <p class="phy"><i>Phylogenetic Tree for phylum Proteobacteria at genus level </i></p>
+        </div>
+    </div>
+
+    <div class="phylog">
+
+      <h3 class="sub-head">5.2 Heat Tree</h3>
+      <p>The Heat Tree Analysis is used to utilize the hierarchical structure of taxonomic
+        classifications to quantitatively (using the median abundance) and
+        statistically depict taxonomic differences between microbial communities.</p>
+
+        <div class="phylogenetic">
+          <img id="img-ali" style="width:1200px"src="src/pictures/Analysis/HeatTree.png" alt="heattree analysis">
+          <p class="phy"><i>Heat Tree</i></p>
+        </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!--MORE--------->
+  <div class="more" id="more" data-tab-content>
+
+    <div class="more-info">
+
+
+      <h2 class="fhead">Workflow</h2>
+      <div class="workflow">
+        <h3 class="sub-head">1. Preparation and sequencing </h3>
+        <p>From the raw DNA samples to the final data, each step, including sample test, PCR,
+          library preparation and sequencing, influences the quality of the data, and data quality
+          directly impacts the analysis results. To keep the reliability of the data,
+          quality control (QC) is performed at each step of the procedure. </p>
+<br><br>
+          <div class="analysiss">
+            <img id="img-ali" style="width:600px"src="src/images/16s_pipeline_en.png" alt="16s analysis">
+
+          </div>
+
+
+      </div>
+
+
+      <br><div class="workflow">
+        <h3 class="sub-head">2. Data analysis procedures </h3>
+        <p>For the veracity of sequencing data analysis, raw data would be merged and filtered to get
+          clean data. The effective data is used to do OTU cluster and species annotation for the respective
+          sequence of each OTU. Thus, the relative species, evenness and abundance distribution can be analyzed
+          with Alpha diversity, Beta diversity . Furthermore, OTU picking, taxonomic assignment construction of
+          phylogenetic trees through downstream statistical analysis explain the community construction
+          differences between samples or among groups via PCA. </p><br>
+
+          <div class="analysiss">
+            <img id="img-ali" style="width:600px"src="src/images/16-pipeline-2.png" alt="16s analysis">
+
+          </div>
+      </div>
+                
+      </div>
+    </div>
+
+
+
+
+</div>
+
+
+</body>
+</html>
